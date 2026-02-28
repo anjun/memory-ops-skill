@@ -20,24 +20,30 @@ status_json="$(openclaw memory status --json 2>/dev/null || true)"
 
 echo "$status_json" | grep -q '"provider"' || die "status missing provider field"
 
-files=$(echo "$status_json" | python3 - <<'PY'
+parsed=$(python3 -c '
 import json,sys
+raw=sys.stdin.read()
+clean="\n".join([ln for ln in raw.splitlines() if not ln.startswith("[proxychains]")]).strip()
+if not clean:
+    print("-1 -1"); raise SystemExit
+start=min([x for x in [clean.find("["), clean.find("{")] if x!=-1], default=-1)
+if start==-1:
+    print("-1 -1"); raise SystemExit
+clean=clean[start:]
 try:
-    j=json.loads(sys.stdin.read())
+    j=json.loads(clean)
 except Exception:
-    print(-1); raise SystemExit
-print(j.get('files', -1))
-PY
-)
-chunks=$(echo "$status_json" | python3 - <<'PY'
-import json,sys
-try:
-    j=json.loads(sys.stdin.read())
-except Exception:
-    print(-1); raise SystemExit
-print(j.get('chunks', -1))
-PY
-)
+    print("-1 -1"); raise SystemExit
+if isinstance(j, list) and j:
+    j=j[0].get("status", {})
+elif isinstance(j, dict) and "status" in j:
+    j=j.get("status", {})
+elif not isinstance(j, dict):
+    print("-1 -1"); raise SystemExit
+print("{} {}".format(j.get("files", -1), j.get("chunks", -1)))
+' <<< "$status_json")
+files=$(echo "$parsed" | awk '{print $1}')
+chunks=$(echo "$parsed" | awk '{print $2}')
 
 if [[ "$files" == "-1" || "$chunks" == "-1" ]]; then
   die "failed to parse files/chunks from memory status"
