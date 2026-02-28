@@ -46,6 +46,8 @@ bash <(curl -fsSL https://raw.githubusercontent.com/anjun/memory-ops-skill/maste
 - Keep `MEMORY.md` concise; sink procedures to `memory/projects/*`
 - Security hard stop: no token/cookie/password/API key values in memory files
 - Regression checks: `memory-lint` + retrieval regression checklist
+- Context-compression parity: 3-7 conclusions + 3-10 event summaries + risk/todo output contract
+- Evaluation parity: 3-10 case design + explicit acceptance signals + rollback-aware checks
 
 ## 4) Package structure
 

@@ -46,6 +46,8 @@ bash <(curl -fsSL https://raw.githubusercontent.com/anjun/memory-ops-skill/maste
 - `MEMORY.md` 保持精简，过程细节下沉到 `memory/projects/*`
 - 安全硬规则：禁止把 token/cookie/password/API key 值写入记忆文件
 - 回归校验：`memory-lint` + 检索回归检查
+- 压缩总结能力对齐：3-7 条结论 + 3-10 条事件摘要 + 风险/待办输出约束
+- 评估能力对齐：3-10 用例设计 + 验收信号 + 回滚意识
 
 ## 4）包结构
 

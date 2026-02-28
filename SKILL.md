@@ -22,6 +22,8 @@ Use this skill to keep memory useful, short, and safe.
 - Layout and placement rules: `references/memory-layout.md`
 - Hard write gate and safety rules: `references/write-gate.md`
 - Compression + regression checklist: `references/regression-checklist.md`
+- Context compression mode (output contract): `references/context-compression-mode.md`
+- Evaluation mode (test design + acceptance): `references/evaluation-mode.md`
 - OpenClaw memory_search bootstrap/fix: `references/openclaw-memory-search-fix.md`
 
 ## Required output contract (for memory update tasks)
@@ -32,6 +34,12 @@ Always return:
 2. Target file path
 3. What was added/removed (short bullets)
 4. Verification result (`memory-lint` / retrieval check)
+
+### If the task is context compression, also return
+
+1. **3-7 reusable conclusions**
+2. **3-10 event summaries**
+3. **actionable todos/risks** (if any)
 
 ## Non-negotiables
 
