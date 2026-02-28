@@ -22,6 +22,7 @@ Use this skill to keep memory useful, short, and safe.
 - Layout and placement rules: `references/memory-layout.md`
 - Hard write gate and safety rules: `references/write-gate.md`
 - Compression + regression checklist: `references/regression-checklist.md`
+- OpenClaw memory_search bootstrap/fix: `references/openclaw-memory-search-fix.md`
 
 ## Required output contract (for memory update tasks)
 

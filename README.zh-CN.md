@@ -53,7 +53,23 @@ bash <(curl -fsSL https://raw.githubusercontent.com/anjun/memory-ops-skill/maste
 - `references/memory-layout.md`
 - `references/write-gate.md`
 - `references/regression-checklist.md`
+- `references/openclaw-memory-search-fix.md`（OpenClaw 记忆检索修复说明）
 - `scripts/install.sh`：跨运行时安装脚本
+
+## 4.1）OpenClaw memory_search 修复（已内置说明）
+
+如果初始化后检索为空，可执行：
+
+```bash
+bash scripts/setup-memory-search-local.sh
+```
+
+然后验证：
+
+```bash
+openclaw memory status --json
+openclaw memory search --query "飞书 发图片"
+```
 
 ## 5）兼容性说明
 
