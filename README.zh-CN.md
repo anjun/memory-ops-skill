@@ -76,10 +76,21 @@ openclaw memory status --json
 openclaw memory search --query "飞书 发图片"
 ```
 
-## 5）兼容性说明
+## 5）兼容性与测试矩阵
 
-- **OpenClaw**：原生兼容
-- **Codex / Claude Code / OpenCode**：同一套方法论和文件结构可直接复用；默认安装到各自常见技能目录。如你的环境目录不同，使用 `--dir` 指定。
+> 重要：本项目**不承诺**对所有版本做前向/后向完全兼容；请以测试矩阵为准。
+
+| 运行时 | 版本/范围 | 状态 | 已验证内容 |
+|---|---|---|---|
+| OpenClaw | `2026.2.26` | ✅ 已验证 | 安装、SKILL 解析、`memory-lint`、`regression-memory-search`、`setup-memory-search-local`（安全模式） |
+| Codex CLI | 仅安装路径验证 | ⚠️ 部分验证 | `scripts/install.sh --target codex` 能正确落盘 |
+| Claude Code | 仅安装路径验证 | ⚠️ 部分验证 | `scripts/install.sh --target claude` 能正确落盘 |
+| OpenCode | 仅安装路径验证 | ⚠️ 部分验证 | `scripts/install.sh --target opencode` 能正确落盘 |
+
+### 说明
+
+- 除 OpenClaw 外，当前是“**安装层面已验证**”，不是“端到端行为已验证”。
+- 如果要在 Codex / Claude Code / OpenCode 上生产使用，请先在对应运行时做验收测试。
 
 ## 6）本地测试
 

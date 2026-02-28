@@ -76,10 +76,22 @@ openclaw memory status --json
 openclaw memory search --query "飞书 发图片"
 ```
 
-## 5) Runtime compatibility notes
+## 5) Runtime compatibility + test matrix
 
-- **OpenClaw**: native skill structure
-- **Codex / Claude Code / OpenCode**: same methodology + file layout, installed via target-specific default path. If your environment uses different skill paths, pass `--dir`.
+> Important: this project does **not** claim full forward/backward compatibility across all runtime versions.
+> Use the matrix below as the source of truth.
+
+| Runtime | Version / Scope | Status | What was tested |
+|---|---|---|---|
+| OpenClaw | `2026.2.26` | ✅ Verified | Install, SKILL parse, `memory-lint`, `regression-memory-search`, `setup-memory-search-local` (safe mode) |
+| Codex CLI | path installer only | ⚠️ Partial | `scripts/install.sh --target codex` installs files to target path |
+| Claude Code | path installer only | ⚠️ Partial | `scripts/install.sh --target claude` installs files to target path |
+| OpenCode | path installer only | ⚠️ Partial | `scripts/install.sh --target opencode` installs files to target path |
+
+### Notes
+
+- Non-OpenClaw runtimes are currently **installation-verified only**, not full end-to-end behavior verified.
+- If you need strict compatibility in Codex/Claude Code/OpenCode, run local acceptance tests in that runtime before production use.
 
 ## 6) Local test
 
