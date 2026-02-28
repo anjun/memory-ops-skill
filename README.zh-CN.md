@@ -92,7 +92,37 @@ openclaw memory search --query "飞书 发图片"
 - 除 OpenClaw 外，当前是“**安装层面已验证**”，不是“端到端行为已验证”。
 - 如果要在 Codex / Claude Code / OpenCode 上生产使用，请先在对应运行时做验收测试。
 
-## 6）本地测试
+## 6）安装后怎么用
+
+### OpenClaw（推荐）
+
+1. 先安装到 OpenClaw skills 目录：
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/anjun/memory-ops-skill/master/scripts/install.sh) --target openclaw
+```
+
+2. 在聊天里直接用（按意图自动触发），例如：
+
+- “把这条记成长期规则：...”
+- “把这段排障细节下沉到项目记忆”
+- “把今天压缩成 3-7 条结论 + 3-10 条事件”
+- “跑一下记忆质量检查”
+
+3. 可选手工校验：
+
+```bash
+bash ~/.openclaw/workspace/skills/memory-ops/scripts/memory-lint.sh
+bash ~/.openclaw/workspace/skills/memory-ops/scripts/regression-memory-search.sh
+```
+
+### Codex / Claude Code / OpenCode
+
+- 用 `--target codex|claude|opencode` 安装
+- 当前在这些运行时是“**安装层面已验证**”
+- 触发行为取决于各运行时自己的技能加载机制
+
+## 7）本地测试
 
 ```bash
 git clone https://github.com/anjun/memory-ops-skill.git

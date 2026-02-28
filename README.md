@@ -93,7 +93,37 @@ openclaw memory search --query "飞书 发图片"
 - Non-OpenClaw runtimes are currently **installation-verified only**, not full end-to-end behavior verified.
 - If you need strict compatibility in Codex/Claude Code/OpenCode, run local acceptance tests in that runtime before production use.
 
-## 6) Local test
+## 6) How to use after install
+
+### OpenClaw (recommended)
+
+1. Install to OpenClaw skills path:
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/anjun/memory-ops-skill/master/scripts/install.sh) --target openclaw
+```
+
+2. Start using in chat (auto-trigger by intent). Example prompts:
+
+- "Remember this as long-term rule: ..."
+- "Sink these debugging details to project memory"
+- "Compress today into 3-7 conclusions + 3-10 events"
+- "Run memory quality checks"
+
+3. Optional explicit checks:
+
+```bash
+bash ~/.openclaw/workspace/skills/memory-ops/scripts/memory-lint.sh
+bash ~/.openclaw/workspace/skills/memory-ops/scripts/regression-memory-search.sh
+```
+
+### Codex / Claude Code / OpenCode
+
+- Install with `--target codex|claude|opencode`
+- This package is currently **install-verified** on those runtimes.
+- Triggering behavior depends on each runtime's own skill loader/rules.
+
+## 7) Local test
 
 ```bash
 # clone and install locally
