@@ -1,12 +1,12 @@
 # memory-ops-skill
 
-[中文说明](./README.zh-CN.md) | **English**
+**中文** | [English](./README.md)
 
-Unified memory-operation skill package with portable installation flows for **OpenClaw / Codex / Claude Code / OpenCode**.
+统一的记忆优化技能包，支持在 **OpenClaw / Codex / Claude Code / OpenCode** 的 AI 终端中直接安装。
 
-## 1) Install from AI terminal (one command)
+## 1）AI 终端一键安装
 
-> Use these commands directly in terminal.
+> 下面命令可直接复制到终端执行。
 
 ### OpenClaw
 
@@ -32,7 +32,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/anjun/memory-ops-skill/maste
 bash <(curl -fsSL https://raw.githubusercontent.com/anjun/memory-ops-skill/master/scripts/install.sh) --target opencode
 ```
 
-## 2) Optional: custom install path
+## 2）自定义安装目录（可选）
 
 ```bash
 bash <(curl -fsSL https://raw.githubusercontent.com/anjun/memory-ops-skill/master/scripts/install.sh) \
@@ -40,31 +40,29 @@ bash <(curl -fsSL https://raw.githubusercontent.com/anjun/memory-ops-skill/maste
   --dir ~/.my-ai/skills/memory-ops
 ```
 
-## 3) What this skill enforces
+## 3）这个技能做什么
 
-- Memory write classification: `long_term` / `project_detail` / `daily_log`
-- Keep `MEMORY.md` concise; sink procedures to `memory/projects/*`
-- Security hard stop: no token/cookie/password/API key values in memory files
-- Regression checks: `memory-lint` + retrieval regression checklist
+- 强制记忆写入分类：`long_term` / `project_detail` / `daily_log`
+- `MEMORY.md` 保持精简，过程细节下沉到 `memory/projects/*`
+- 安全硬规则：禁止把 token/cookie/password/API key 值写入记忆文件
+- 回归校验：`memory-lint` + 检索回归检查
 
-## 4) Package structure
+## 4）包结构
 
-- `SKILL.md` — unified entrypoint
+- `SKILL.md`：统一入口
 - `references/memory-layout.md`
 - `references/write-gate.md`
 - `references/regression-checklist.md`
-- `scripts/install.sh` — portable installer
+- `scripts/install.sh`：跨运行时安装脚本
 
-## 5) Runtime compatibility notes
+## 5）兼容性说明
 
-- **OpenClaw**: native skill structure
-- **Codex / Claude Code / OpenCode**: same methodology + file layout, installed via target-specific default path. If your environment uses different skill paths, pass `--dir`.
+- **OpenClaw**：原生兼容
+- **Codex / Claude Code / OpenCode**：同一套方法论和文件结构可直接复用；默认安装到各自常见技能目录。如你的环境目录不同，使用 `--dir` 指定。
 
-## 6) Local test
+## 6）本地测试
 
 ```bash
-# clone and install locally
-
 git clone https://github.com/anjun/memory-ops-skill.git
 cd memory-ops-skill
 bash scripts/install.sh --target openclaw
