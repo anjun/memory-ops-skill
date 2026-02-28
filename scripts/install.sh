@@ -51,6 +51,15 @@ case "$TARGET" in
     ;;
 esac
 
+# Safety guard: never sync into top-level directories
+case "$DEST_DIR" in
+  "/"|"$HOME"|"$HOME/.openclaw/workspace"|"$HOME/.openclaw/workspace/skills"|"$HOME/.codex/skills"|"$HOME/.claude/skills"|"$HOME/.opencode/skills")
+    echo "[memory-ops] unsafe --dir target: $DEST_DIR"
+    echo "[memory-ops] use a subdirectory, e.g. .../skills/$SKILL_NAME"
+    exit 1
+    ;;
+esac
+
 TMP_DIR="$(mktemp -d)"
 cleanup() { rm -rf "$TMP_DIR"; }
 trap cleanup EXIT
