@@ -66,6 +66,7 @@ mkdir -p "$DEST_DIR"
 rsync -a --delete \
   "$TMP_DIR/repo/SKILL.md" \
   "$TMP_DIR/repo/references" \
+  "$TMP_DIR/repo/scripts" \
   "$DEST_DIR/"
 
 echo "[memory-ops] installed at: $DEST_DIR"

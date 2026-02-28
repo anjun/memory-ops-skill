@@ -31,5 +31,5 @@ Store only location/method, never secret values.
 If `MEMORY.md` changed, run:
 
 ```bash
-./scripts/memory-lint.sh
+bash scripts/memory-lint.sh
 ```
