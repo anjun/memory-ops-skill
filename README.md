@@ -55,6 +55,9 @@ bash <(curl -fsSL https://raw.githubusercontent.com/anjun/memory-ops-skill/maste
 - `references/regression-checklist.md`
 - `references/openclaw-memory-search-fix.md` (OpenClaw bootstrap/fix guide)
 - `scripts/install.sh` — portable installer
+- `scripts/setup-memory-search-local.sh` — OpenClaw memory_search bootstrap/fix
+- `scripts/regression-memory-search.sh` — retrieval regression checks
+- `scripts/memory-lint.sh` — memory quality/security lint
 
 ## 4.1) OpenClaw memory_search fix (included)
 

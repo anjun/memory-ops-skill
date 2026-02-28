@@ -55,6 +55,9 @@ bash <(curl -fsSL https://raw.githubusercontent.com/anjun/memory-ops-skill/maste
 - `references/regression-checklist.md`
 - `references/openclaw-memory-search-fix.md`（OpenClaw 记忆检索修复说明）
 - `scripts/install.sh`：跨运行时安装脚本
+- `scripts/setup-memory-search-local.sh`：OpenClaw memory_search 初始化/修复
+- `scripts/regression-memory-search.sh`：检索回归检查
+- `scripts/memory-lint.sh`：记忆质量与安全校验
 
 ## 4.1）OpenClaw memory_search 修复（已内置说明）
 

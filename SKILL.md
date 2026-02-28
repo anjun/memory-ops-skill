@@ -1,6 +1,6 @@
 ---
 name: memory-ops
-description: Unified memory operation skill for OpenClaw: organize MEMORY.md vs daily/project notes, compress long conversations into reusable conclusions, enforce memory write gate (classification + security), and run regression checks before/after memory changes. Use when user asks to remember things, optimize memory quality, sink details from MEMORY.md, build memory workflows, or validate memory retrieval reliability.
+description: "Unified memory operation skill for OpenClaw: organize MEMORY.md vs daily/project notes, compress long conversations into reusable conclusions, enforce memory write gate (classification + security), and run regression checks before/after memory changes. Use when user asks to remember things, optimize memory quality, sink details from MEMORY.md, build memory workflows, or validate memory retrieval reliability."
 ---
 
 # Memory Ops

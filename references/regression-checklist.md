@@ -12,8 +12,8 @@
 Run representative checks after major memory changes:
 
 ```bash
-./scripts/memory-lint.sh
-./scripts/regression-memory-search.sh
+bash scripts/memory-lint.sh
+bash scripts/regression-memory-search.sh
 ```
 
 Expected:
