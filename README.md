@@ -40,6 +40,15 @@ bash <(curl -fsSL https://raw.githubusercontent.com/anjun/memory-ops-skill/maste
   --dir ~/.my-ai/skills/memory-ops
 ```
 
+## 2.1) Does this depend on AGENTS.md?
+
+No. This package is designed to be **self-contained**:
+
+- Routing/writing rules are in `SKILL.md` + `references/write-gate.md`
+- Verification is in scripts (`memory-lint`, `regression-memory-search`)
+
+If a workspace has extra AGENTS.md conventions, they are additive.
+
 ## 3) What this skill enforces
 
 - Memory write classification: `long_term` / `project_detail` / `daily_log`

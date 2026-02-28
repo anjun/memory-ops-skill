@@ -40,6 +40,15 @@ bash <(curl -fsSL https://raw.githubusercontent.com/anjun/memory-ops-skill/maste
   --dir ~/.my-ai/skills/memory-ops
 ```
 
+## 2.1）这个技能是否依赖 AGENTS.md？
+
+不依赖。这个技能包按“**自包含**”设计：
+
+- 分流/写入规则写在 `SKILL.md` + `references/write-gate.md`
+- 校验逻辑在脚本里（`memory-lint`、`regression-memory-search`）
+
+如果工作区还有额外 AGENTS.md 约束，只是叠加，不是前提。
+
 ## 3）这个技能做什么
 
 - 强制记忆写入分类：`long_term` / `project_detail` / `daily_log`
