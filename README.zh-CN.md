@@ -78,6 +78,14 @@ bash <(curl -fsSL https://raw.githubusercontent.com/anjun/memory-ops-skill/maste
 bash scripts/setup-memory-search-local.sh
 ```
 
+支持注入自定义配置路径（多 profile / 非默认路径）：
+
+```bash
+OPENCLAW_CONFIG_PATH=~/.openclaw-prod/openclaw.json bash scripts/setup-memory-search-local.sh
+# 或
+bash scripts/setup-memory-search-local.sh --config ~/.openclaw-prod/openclaw.json
+```
+
 然后验证：
 
 ```bash

@@ -4,7 +4,7 @@ set -euo pipefail
 # Setup OpenClaw memory_search to use LOCAL embeddings (no external API key).
 # Safer version: creates config backup before modifying.
 
-CFG="$HOME/.openclaw/openclaw.json"
+CFG="${OPENCLAW_CONFIG_PATH:-$HOME/.openclaw/openclaw.json}"
 MODEL_PATH="hf:ggml-org/embeddinggemma-300m-qat-q8_0-GGUF/embeddinggemma-300m-qat-Q8_0.gguf"
 ASSUME_YES=0
 SKIP_REBUILD=0
@@ -15,9 +15,10 @@ die() { echo "[setup-memory-search-local][ERROR] $*" >&2; exit 1; }
 
 usage() {
   cat <<EOF
-Usage: $0 [--yes] [--skip-rebuild] [--skip-restart]
+Usage: $0 [--config <path>] [--yes] [--skip-rebuild] [--skip-restart]
 
 Options:
+  --config <path> OpenClaw config path (default: OPENCLAW_CONFIG_PATH or ~/.openclaw/openclaw.json)
   --yes           Non-interactive confirm
   --skip-rebuild  Skip npm rebuild node-llama-cpp
   --skip-restart  Skip openclaw gateway restart
@@ -26,6 +27,11 @@ EOF
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
+    --config)
+      [[ $# -ge 2 ]] || die "--config requires a path"
+      CFG="$2"
+      shift 2
+      ;;
     --yes) ASSUME_YES=1; shift ;;
     --skip-rebuild) SKIP_REBUILD=1; shift ;;
     --skip-restart) SKIP_RESTART=1; shift ;;
@@ -37,6 +43,7 @@ done
 command -v openclaw >/dev/null 2>&1 || die "openclaw not found in PATH"
 [[ -f "$CFG" ]] || die "config not found: $CFG"
 
+say "using config: $CFG"
 say "Plan:"
 say "  1) backup $CFG"
 say "  2) set memorySearch provider=local"
