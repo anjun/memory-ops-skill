@@ -58,6 +58,23 @@ bash <(curl -fsSL https://raw.githubusercontent.com/anjun/memory-ops-skill/maste
 - 压缩总结能力对齐：3-7 条结论 + 3-10 条事件摘要 + 风险/待办输出约束
 - 评估能力对齐：3-10 用例设计 + 验收信号 + 回滚意识
 
+## 3.1）可选：Git pre-commit 钩子
+
+每次提交前自动检查 `MEMORY.md`：
+
+```bash
+# 安装钩子
+cp scripts/pre-commit-hook-template .git/hooks/pre-commit
+chmod +x .git/hooks/pre-commit
+
+# 设置 MEMORY.md 路径（如果不在默认位置）
+git config --local memory.file /path/to/your/MEMORY.md
+```
+
+钩子会在以下情况阻止提交：
+- `MEMORY.md` 超过 150 行
+- 检测到潜在敏感信息（token、密码、API key）
+
 ## 4）包结构
 
 - `SKILL.md`：统一入口

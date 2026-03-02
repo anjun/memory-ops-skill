@@ -1,0 +1,31 @@
+#!/bin/bash
+# Pre-commit hook template for memory-ops skill
+# Install: copy to .git/hooks/pre-commit and chmod +x
+
+set -e
+
+echo "🔍 Running memory-lint before commit..."
+
+# Find memory-lint.sh (handle both skill install and direct usage)
+LINT_SCRIPT=""
+for path in "$(dirname "$0")/../scripts/memory-lint.sh" "$(dirname "$0")/memory-lint.sh" "./scripts/memory-lint.sh"; do
+    if [ -f "$path" ]; then
+        LINT_SCRIPT="$path"
+        break
+    fi
+done
+
+if [ -z "$LINT_SCRIPT" ]; then
+    echo "⚠️  memory-lint.sh not found, skipping..."
+    exit 0
+fi
+
+MEMORY_FILE="${MEMORY_FILE:-}" bash "$LINT_SCRIPT"
+if [ $? -ne 0 ]; then
+    echo "❌ Memory lint failed. Commit aborted."
+    echo "💡 Tip: Run 'MEMORY_FILE=/path/to/MEMORY.md bash $LINT_SCRIPT' to check manually"
+    exit 1
+fi
+
+echo "✅ Memory lint passed."
+exit 0

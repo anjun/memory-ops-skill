@@ -58,6 +58,23 @@ If a workspace has extra AGENTS.md conventions, they are additive.
 - Context-compression parity: 3-7 conclusions + 3-10 event summaries + risk/todo output contract
 - Evaluation parity: 3-10 case design + explicit acceptance signals + rollback-aware checks
 
+## 3.1) Optional: Git pre-commit hook
+
+Auto-check `MEMORY.md` before every commit:
+
+```bash
+# Install hook
+cp scripts/pre-commit-hook-template .git/hooks/pre-commit
+chmod +x .git/hooks/pre-commit
+
+# Set your MEMORY.md path (if not in default location)
+git config --local memory.file /path/to/your/MEMORY.md
+```
+
+The hook will block commits if:
+- `MEMORY.md` exceeds 150 lines
+- Potential secrets detected (tokens, passwords, API keys)
+
 ## 4) Package structure
 
 - `SKILL.md` — unified entrypoint
