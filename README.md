@@ -95,6 +95,14 @@ If retrieval is empty after init, run:
 bash scripts/setup-memory-search-local.sh
 ```
 
+Custom config path is supported (for multi-profile/non-default installs):
+
+```bash
+OPENCLAW_CONFIG_PATH=~/.openclaw-prod/openclaw.json bash scripts/setup-memory-search-local.sh
+# or
+bash scripts/setup-memory-search-local.sh --config ~/.openclaw-prod/openclaw.json
+```
+
 Then verify:
 
 ```bash
